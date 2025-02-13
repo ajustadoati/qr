@@ -36,7 +36,7 @@ public class QRService {
   public ResponseEntity<ByteArrayResource> generateQRCode(String text)
     throws WriterException, IOException {
     QRCodeWriter qrCodeWriter = new QRCodeWriter();
-    BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 250, 250);
+    BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 300, 300);
 
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     MatrixToImageWriter.writeToStream(bitMatrix, "PNG", baos);

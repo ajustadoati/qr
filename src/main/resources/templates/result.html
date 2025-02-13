@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles del Pago</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+    .container { border: 1px solid #ddd; padding: 20px; display: inline-block; text-align: left; }
+    img { max-width: 200px; margin-top: 10px; }
+    button { padding: 10px 20px; background: blue; color: white; border: none; cursor: pointer; margin-top: 10px; }
+  </style>
+</head>
+<body onload="printQR()">
+<h2>Detalles de Pago</h2>
+<div class="container">
+  <p><strong>Nombre:</strong> <span th:text="${pago.firstName}"></span></p>
+  <p><strong>Cédula:</strong> <span th:text="${pago.numberId}"></span></p>
+  <p><strong>Teléfono:</strong> <span th:text="${pago.mobileNumber}"></span></p>
+
+  <h3>Bancos</h3>
+  <ul class="bank-list">
+    <li class="bank-item" th:each="bank: ${pago.banks}">
+      <strong></strong> <span th:text="${bank.name}"></span><br>
+    </li>
+  </ul>
+  <br>
+
+</div>
+
+</body>
+</html>

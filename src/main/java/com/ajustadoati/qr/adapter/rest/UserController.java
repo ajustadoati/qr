@@ -69,6 +69,15 @@ public class UserController {
     return "pago";
   }
 
+  @GetMapping("/{numberId}/result")
+  public String showPaymentResult(@PathVariable String numberId, Model model) {
+    var user = userService.getUserByNumberId(numberId);
+
+    model.addAttribute("pago", user);
+
+    return "result";
+  }
+
 
   @GetMapping("/new")
   public String showUserForm(Model model) {

@@ -24,7 +24,7 @@ public class QRController {
   @GetMapping("/{numberId}/qr")
   public ResponseEntity<ByteArrayResource> generateQR(@PathVariable String numberId)
     throws WriterException, IOException {
-    String url = "https://qr.ajustadoati.com/api/users/" + numberId;
+    String url = "https://qr.ajustadoati.com/api/users/" + numberId+"/result";
     return qrService.generateQRCode(url);
   }
 }
