@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultar Usuario</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+    .container { border: 1px solid #ddd; padding: 20px; display: inline-block; text-align: left; }
+    input { padding: 10px; width: 100%; margin-bottom: 10px; }
+    button { padding: 10px 20px; background: blue; color: white; border: none; cursor: pointer; width: 100%; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+<h2>Consultar Usuario</h2>
+<div class="container">
+  <form action="/api/users/consulta" method="post">
+    <label for="numberId"><strong>Cédula:</strong></label>
+    <input type="text" id="numberId" name="numberId" required>
+
+    <button type="submit">Consultar</button>
+  </form>
+
+  <p class="error" th:if="${error}" th:text="${error}"></p>
+</div>
+</body>
+</html>

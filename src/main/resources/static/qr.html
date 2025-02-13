@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imprimir QR</title>
+  <style>
+    body { text-align: center; font-family: Arial, sans-serif; padding: 20px; }
+    #qr-container { border: 1px solid #ddd; padding: 20px; display: inline-block; }
+    button { margin-top: 10px; padding: 10px 20px; background: blue; color: white; border: none; cursor: pointer; }
+    button:hover { background: darkblue; }
+  </style>
+</head>
+<body>
+<div id="qr-container">
+  <h2>QR de Pago</h2>
+  <img id="qr-image" src="" alt="Código QR">
+  <button onclick="window.print()">Imprimir</button>
+</div>
+<div class="text-center">
+  <a href="/" class="btn">Regresar</a>
+</div>
+
+<script>
+  // Obtener el parámetro de la URL (numberId)
+  const urlParams = new URLSearchParams(window.location.search);
+  const numberId = urlParams.get('numberId');
+
+  // Establecer la imagen del QR
+  if (numberId) {
+      document.getElementById('qr-image').src = `/api/users/${numberId}/qr`;
+  }
+</script>
+</body>
+</html>
