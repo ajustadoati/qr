@@ -5,13 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalles del Pago</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    .container { border: 1px solid #ddd; padding: 20px; display: inline-block; text-align: left; }
-    img { max-width: 200px; margin-top: 10px; }
-    button { padding: 10px 20px; background: blue; color: white; border: none; cursor: pointer; margin-top: 10px; }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 20px;
+    }
+    .container {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      display: inline-block;
+      text-align: left;
+      max-width: 400px;
+      width: 100%;
+    }
+    h2 {
+      color: #0073e6;
+    }
+    h3 {
+      color: #005bb5;
+    }
+    .bank-list {
+      padding: 0;
+      list-style-type: none;
+    }
+    .bank-item {
+      background: #eef3f8;
+      padding: 8px;
+      border-radius: 5px;
+      margin: 5px 0;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin: 5px;
+    }
+    button:hover {
+      background: #005bb5;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #ddd;
+      color: #333;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+      margin: 5px;
+    }
+    .btn:hover {
+      background: #bbb;
+    }
   </style>
 </head>
-<body onload="printQR()">
+<body>
 <h2>Detalles de Pago</h2>
 <div class="container">
   <p><strong>Nombre:</strong> <span th:text="${pago.firstName}"></span></p>
@@ -21,18 +80,16 @@
   <h3>Bancos</h3>
   <ul class="bank-list">
     <li class="bank-item" th:each="bank: ${pago.banks}">
-      <strong>Banco:</strong> <span th:text="${bank.name}"></span><br>
+      <span th:text="${bank.name}"></span>
     </li>
   </ul>
-  <br>
+
   <span id="numberId" th:text="${pago.numberId}" hidden></span>
-  <button onclick="openQRPage()">Imprimir QR</button>
-  <div class="text-center">
+  <div class="button-container">
+    <button onclick="openQRPage()">Imprimir QR</button>
     <a href="/" class="btn">Regresar</a>
   </div>
 </div>
-
-
 
 <script>
   function openQRPage() {
