@@ -57,9 +57,9 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ajustado@ajustadoati.com << 'EOF'
             docker pull ajustadoati/qr-be:latest
-            docker stop app || true
-            docker rm app || true
-            docker run -d --name app \
+            docker stop qr || true
+            docker rm qr || true
+            docker run -d --name qr \
               -p 8084:8080 \
               -e DATASOURCE_USERNAME="${{ secrets.DATASOURCE_USERNAME }}" \
               -e DATASOURCE_PASSWORD="${{ secrets.DATASOURCE_PASSWORD }}" \
